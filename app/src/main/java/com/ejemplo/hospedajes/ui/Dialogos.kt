@@ -3,6 +3,7 @@ package com.ejemplo.hospedajes.ui
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -35,6 +36,7 @@ fun ConfirmDeleteDialog(
         confirmButton = {
             TextButton(
                 onClick = onConfirm,
+                shape = RectangleShape,
                 colors = ButtonDefaults.textButtonColors(
                     contentColor = MaterialTheme.colorScheme.error
                 )
@@ -43,7 +45,7 @@ fun ConfirmDeleteDialog(
             }
         },
         dismissButton = {
-            TextButton(onClick = onDismiss) {
+            TextButton(onClick = onDismiss, shape = RectangleShape) {
                 Text("Cancelar")
             }
         }
@@ -145,13 +147,14 @@ fun AddEditHotelDialog(
                     } else {
                         showErrors = true
                     }
-                }
+                },
+                shape = RectangleShape
             ) {
                 Text(if (hotelToEdit == null) "Guardar" else "Actualizar")
             }
         },
         dismissButton = {
-            TextButton(onClick = onDismiss) {
+            TextButton(onClick = onDismiss, shape = RectangleShape) {
                 Text("Cancelar")
             }
         }
