@@ -47,7 +47,6 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
 
-    // UD3: ViewModel en Compose (apartado 6) e imágenes remotas con Coil (apartado 4)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.coil.compose)
 

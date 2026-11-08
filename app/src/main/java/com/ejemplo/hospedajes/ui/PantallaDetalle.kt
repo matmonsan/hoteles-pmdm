@@ -1,4 +1,4 @@
-package com.ejemplo.hospedajes
+package com.ejemplo.hospedajes.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -35,8 +35,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.ejemplo.hospedajes.data.Hotel
+import androidx.compose.ui.tooling.preview.Preview
+import com.ejemplo.hospedajes.data.HotelRepository
+import com.ejemplo.hospedajes.ui.theme.HospedajesTheme
 
-// Pantalla de detalle de un hotel (UD3, apartado 8.3)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PantallaDetalle(
@@ -108,5 +111,19 @@ fun PantallaDetalle(
                 }
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PantallaDetallePreview() {
+    HospedajesTheme {
+        PantallaDetalle(
+            hotel = HotelRepository.getHotels().first(),
+            snackbarHostState = SnackbarHostState(),
+            onVolver = {},
+            onEditar = {},
+            onBorrar = {}
+        )
     }
 }
