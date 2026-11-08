@@ -3,35 +3,27 @@ package com.ejemplo.hospedajes.ui
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -54,11 +46,8 @@ fun PantallaDetalle(
             TopAppBar(
                 title = { Text(hotel.name) },
                 navigationIcon = {
-                    IconButton(onClick = onVolver) {
-                        Icon(
-                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Volver a la lista"
-                        )
+                    TextButton(onClick = onVolver, shape = RectangleShape) {
+                        Text("Volver")
                     }
                 }
             )
@@ -80,7 +69,6 @@ fun PantallaDetalle(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(220.dp)
-                    .clip(RoundedCornerShape(16.dp))
             )
             Text(hotel.name, style = MaterialTheme.typography.headlineSmall)
             Text("Ciudad: ${hotel.city}")
@@ -93,20 +81,17 @@ fun PantallaDetalle(
                     .padding(top = 16.dp),
                 horizontalArrangement = Arrangement.spacedBy(8.dp, Alignment.End)
             ) {
-                OutlinedButton(onClick = onEditar) {
-                    Icon(Icons.Default.Edit, contentDescription = null)
-                    Spacer(Modifier.width(8.dp))
+                OutlinedButton(onClick = onEditar, shape = RectangleShape) {
                     Text("Editar")
                 }
                 Button(
                     onClick = onBorrar,
+                    shape = RectangleShape,
                     colors = ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.error,
                         contentColor = MaterialTheme.colorScheme.onError
                     )
                 ) {
-                    Icon(Icons.Default.Delete, contentDescription = null)
-                    Spacer(Modifier.width(8.dp))
                     Text("Eliminar")
                 }
             }

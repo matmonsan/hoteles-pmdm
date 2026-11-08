@@ -12,14 +12,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ElevatedCard
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -29,7 +25,6 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -51,8 +46,8 @@ fun PantallaPrincipal(
     Scaffold(
         topBar = { TopAppBar(title = { Text("Mis hospedajes") }) },
         floatingActionButton = {
-            FloatingActionButton(onClick = onAddClick) {
-                Icon(Icons.Default.Add, contentDescription = "Agregar hospedaje")
+            Button(onClick = onAddClick, shape = RectangleShape) {
+                Text("Añadir")
             }
         },
         snackbarHost = { SnackbarHost(snackbarHostState) }
@@ -64,7 +59,7 @@ fun PantallaPrincipal(
                     .padding(paddingValues),
                 contentAlignment = Alignment.Center
             ) {
-                Text("No hay hospedajes registrados. Pulsa + para añadir uno.")
+                Text("No hay hospedajes registrados. Pulsa Añadir para crear uno.")
             }
         } else {
             LazyColumn(
@@ -86,10 +81,8 @@ fun HotelCard(
     hotel: Hotel,
     onClick: () -> Unit
 ) {
-    ElevatedCard(
+    Card(
         onClick = onClick,
-        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 6.dp),
-        shape = RoundedCornerShape(20.dp),
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp)
@@ -104,9 +97,7 @@ fun HotelCard(
                 model = hotel.image,
                 contentDescription = "Fotografía de ${hotel.name}",
                 contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .size(110.dp)
-                    .clip(RoundedCornerShape(16.dp))
+                modifier = Modifier.size(110.dp)
             )
 
             Spacer(modifier = Modifier.width(16.dp))
