@@ -18,13 +18,7 @@ class HospedajeViewModel : ViewModel() {
         uiState = uiState.copy(hotelList = HotelRepository.getHotels())
     }
 
-    fun onHotelClicked(hotel: Hotel) {
-        uiState = uiState.copy(selectedHotelId = hotel.id)
-    }
-
-    fun onBackToList() {
-        uiState = uiState.copy(selectedHotelId = null)
-    }
+    // onHotelClicked y onBackToList se quitan: ahora navega el NavController (UD4, 4.6)
 
     fun onAddHotelClicked() {
         uiState = uiState.copy(isAddDialogOpen = true)
@@ -89,7 +83,6 @@ class HospedajeViewModel : ViewModel() {
         uiState = uiState.copy(
             hotelList = HotelRepository.getHotels(),
             hotelToDelete = null,
-            selectedHotelId = null,
             userMessage = "Hospedaje '${target.name}' borrado"
         )
     }
