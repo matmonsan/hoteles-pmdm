@@ -12,9 +12,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
@@ -83,8 +81,7 @@ fun CabeceraMenu(usuario: Usuario?) {
 fun ContenidoMenuLateral(
     usuario: Usuario?,
     destino: NavDestination?,
-    onSeccionClick: (Seccion) -> Unit,
-    onCerrarSesion: () -> Unit
+    onSeccionClick: (Seccion) -> Unit
 ) {
     ModalDrawerSheet {
         CabeceraMenu(usuario)
@@ -99,15 +96,5 @@ fun ContenidoMenuLateral(
                 modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
             )
         }
-
-        HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp))
-
-        NavigationDrawerItem(
-            label = { Text("Cerrar sesión") },
-            icon = { Icon(Icons.AutoMirrored.Filled.ExitToApp, contentDescription = null) },
-            selected = false,
-            onClick = onCerrarSesion,
-            modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
-        )
     }
 }

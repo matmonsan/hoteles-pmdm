@@ -3,7 +3,6 @@ package com.ejemplo.hospedajes.ui
 import androidx.compose.foundation.layout.Box
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
@@ -30,8 +29,7 @@ fun BarraSuperior(
     esNivelSuperior: Boolean,
     onAbrirMenu: () -> Unit,
     onVolver: () -> Unit,
-    onAcercaDe: () -> Unit,
-    onCerrarSesion: () -> Unit
+    onAcercaDe: () -> Unit
 ) {
     var menuAbierto by remember { mutableStateOf(false) }
 
@@ -58,13 +56,6 @@ fun BarraSuperior(
                         text = { Text("Acerca de") },
                         leadingIcon = { Icon(Icons.Default.Info, contentDescription = null) },
                         onClick = { menuAbierto = false; onAcercaDe() }
-                    )
-                    DropdownMenuItem(
-                        text = { Text("Cerrar sesión") },
-                        leadingIcon = {
-                            Icon(Icons.AutoMirrored.Filled.ExitToApp, contentDescription = null)
-                        },
-                        onClick = { menuAbierto = false; onCerrarSesion() }
                     )
                 }
             }
